@@ -5,11 +5,12 @@
 	"type": "module",
 	"scripts": {
 		"dev": "vite",
-		"build": "vite build",
+		"build": "rimraf ../views && vite build",
 		"preview": "vite preview"
 	},
 	"devDependencies": {
 		"vite": "^4.4.5",
-		"sass": "1.69.3"
+		"sass": "1.69.3",
+		"rimraf": "5.0.5"
 	}
 }

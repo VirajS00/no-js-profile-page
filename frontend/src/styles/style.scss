@@ -4,32 +4,6 @@
     box-sizing: border-box;
 }
 
-:root {
-    --gradient-color-1: #2d3084;
-    --gradient-color-2: #d7d8ff;
-    --gradient-color-3: #fff;
-    --nav-bg: rgb(255 255 255 / 0.8);
-    --font-color: #1d2955;
-    --overlay-bg-color: rgb(29 41 85 / 0.8);
-    --overlay-icon-color: #fff;
-    --logo-color: #3952b0;
-    --card-border-color: #cdd8ff;
-    --nav-border-color: #d2d2d2;
-    --card-left-bg: #ceceff;
-    --label-bg: #fff;
-    --checked-label-bg-1: #a32fff;
-    --checked-label-bg-2: #582fff;
-    --desc-color: #7c7c7c;
-    --textbox-border: #d1d1d1;
-    --switch-disabled-track: #e0e0e0;
-    --switch-inner-track: #a0a0a0;
-    --switch-enabled-track: #d9daff;
-    --switch-inner-track-enabled: #565ac6;
-    --button-bg: #6764ff;
-    --button-bg-hover: #4c4ab8;
-    --code-bg: #ddddff;
-}
-
 body {
     padding: 0;
     margin: 0;
@@ -53,6 +27,64 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    &:has(.darkmode:checked) {
+        --gradient-color-1: #6c609a;
+        --gradient-color-2: #2b235a;
+        --gradient-color-3: #3c355a;
+        --nav-bg: rgb(52 52 52 / 0.8);
+        --card-bg: rgb(33 26 63 / 0.8);
+        --font-color: #c5d1ff;
+        --overlay-bg-color: rgba(232, 232, 232, 0.8);
+        --overlay-icon-color: #4e3d9d;
+        --logo-color: #8ca0ec;
+        --card-border-color: #353466;
+        --nav-border-color: #3d3d3d;
+        --card-left-bg: #25264f;
+        --label-bg: #25264f;
+        --checked-label-bg-1: #ae7fd3;
+        --checked-label-bg-2: #502cdd;
+        --desc-color: #6c609a;
+        --textbox-border: #45539e;
+        --switch-disabled-track: #d0d8ff;
+        --switch-inner-track: #aba0f1;
+        --switch-enabled-track: #d9daff;
+        --switch-inner-track-enabled: #565ac6;
+        --button-bg: #6563ca;
+        --button-bg-hover: rgb(75, 74, 180);
+        --code-bg: #6a6ac3;
+        --input-bg: #2b235a;
+        --input-color: #fff;
+    }
+
+    &:has(.darkmode:not(:checked)) {
+        --gradient-color-1: #2d3084;
+        --gradient-color-2: #d7d8ff;
+        --gradient-color-3: #fff;
+        --nav-bg: rgb(255 255 255 / 0.8);
+        --card-bg: rgb(255 255 255 / 0.8);
+        --font-color: #1d2955;
+        --overlay-bg-color: rgb(29 41 85 / 0.8);
+        --overlay-icon-color: #fff;
+        --logo-color: #3952b0;
+        --card-border-color: #cdd8ff;
+        --nav-border-color: #d2d2d2;
+        --card-left-bg: #ceceff;
+        --label-bg: #fff;
+        --checked-label-bg-1: #a32fff;
+        --checked-label-bg-2: #582fff;
+        --desc-color: #7c7c7c;
+        --textbox-border: #d1d1d1;
+        --switch-disabled-track: #e0e0e0;
+        --switch-inner-track: #a0a0a0;
+        --switch-enabled-track: #d9daff;
+        --switch-inner-track-enabled: #565ac6;
+        --button-bg: #6764ff;
+        --button-bg-hover: #4c4ab8;
+        --code-bg: #ddddff;
+        --input-bg: #fff;
+        --input-color: #1d2955;
+    }
 }
 
 button,
@@ -137,9 +169,9 @@ main {
 }
 
 .card {
-    height: 445px;
+    height: 455px;
     width: 100%;
-    background-color: var(--nav-bg);
+    background-color: var(--card-bg);
     border-radius: 0.5rem;
     backdrop-filter: blur(4px);
     overflow: hidden;
@@ -181,7 +213,7 @@ main {
                 height: 0;
                 width: 0;
                 border: 10px solid transparent;
-                border-right-color: #fff;
+                border-right-color: var(--card-bg);
                 right: -1px;
                 top: 50%;
                 transform: translateY(-50%);
@@ -230,6 +262,8 @@ main {
         border-radius: 0.25em;
         outline: none;
         width: 100%;
+        background-color: var(--input-bg);
+        color: var(--input-color);
 
         &:focus,
         &:hover {
