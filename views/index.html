@@ -5,13 +5,19 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		
 		<title>My Profile - {{ .name }}</title>
-		<link rel="stylesheet" href="/assets/index-4def9420.css">
+		<link rel="stylesheet" href="/assets/index-1a1ace18.css">
 	</head>
 	<body>
 		<nav>
 			<div class="nav-content">
 				<div class="logo">MY LOGO</div>
-				<div>toggle</div>
+				<div>
+					<label for="darkmode" class="darkmode-label">
+						<input type="checkbox" class="darkmode" id="darkmode" />
+						<span class="toggle"></span>
+						<span class="hidden">darkmode</span>
+					</label>
+				</div>
 			</div>
 		</nav>
 		<main>

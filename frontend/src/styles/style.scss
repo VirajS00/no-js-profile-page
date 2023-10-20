@@ -32,58 +32,84 @@ body {
         --gradient-color-1: #6c609a;
         --gradient-color-2: #2b235a;
         --gradient-color-3: #3c355a;
+
         --nav-bg: rgb(52 52 52 / 0.8);
-        --card-bg: rgb(33 26 63 / 0.8);
+        --nav-border-color: #3d3d3d;
+
         --font-color: #c5d1ff;
+        --desc-color: #6c609a;
+
         --overlay-bg-color: rgba(232, 232, 232, 0.8);
         --overlay-icon-color: #4e3d9d;
         --logo-color: #8ca0ec;
+
+        --card-bg: rgb(33 26 63 / 0.8);
         --card-border-color: #353466;
-        --nav-border-color: #3d3d3d;
         --card-left-bg: #25264f;
-        --label-bg: #25264f;
+
         --checked-label-bg-1: #ae7fd3;
         --checked-label-bg-2: #502cdd;
-        --desc-color: #6c609a;
+
         --textbox-border: #45539e;
+        --input-bg: #2b235a;
+        --input-color: #fff;
+        --input-focus-border: #fff;
+
+        --label-bg: #25264f;
+
         --switch-disabled-track: #d0d8ff;
         --switch-inner-track: #aba0f1;
         --switch-enabled-track: #d9daff;
         --switch-inner-track-enabled: #565ac6;
-        --button-bg: #6563ca;
-        --button-bg-hover: rgb(75, 74, 180);
+
+        --button-bg: #aaa9e8;
+        --button-bg-hover: #ccccef;
+        --button-ivert-bg: transparent;
+        --button-font-color: #17143e;
+
         --code-bg: #6a6ac3;
-        --input-bg: #2b235a;
-        --input-color: #fff;
     }
 
     &:has(.darkmode:not(:checked)) {
         --gradient-color-1: #2d3084;
         --gradient-color-2: #d7d8ff;
         --gradient-color-3: #fff;
+
         --nav-bg: rgb(255 255 255 / 0.8);
-        --card-bg: rgb(255 255 255 / 0.8);
+        --nav-border-color: #d2d2d2;
+
         --font-color: #1d2955;
+        --desc-color: #7c7c7c;
+
         --overlay-bg-color: rgb(29 41 85 / 0.8);
         --overlay-icon-color: #fff;
         --logo-color: #3952b0;
+
+        --card-bg: rgb(255 255 255 / 0.8);
         --card-border-color: #cdd8ff;
-        --nav-border-color: #d2d2d2;
         --card-left-bg: #ceceff;
+
         --label-bg: #fff;
+
+        --textbox-border: #d1d1d1;
+        --input-bg: #fff;
+        --input-color: #1d2955;
+        --input-focus-border: #565ac6;
+
         --checked-label-bg-1: #a32fff;
         --checked-label-bg-2: #582fff;
-        --desc-color: #7c7c7c;
-        --textbox-border: #d1d1d1;
+
         --switch-disabled-track: #e0e0e0;
         --switch-inner-track: #a0a0a0;
         --switch-enabled-track: #d9daff;
         --switch-inner-track-enabled: #565ac6;
+
         --button-bg: #6764ff;
         --button-bg-hover: #4c4ab8;
+        --button-ivert-bg: #fff;
+        --button-font-color: #fff;
+
         --code-bg: #ddddff;
-        --input-bg: #fff;
-        --input-color: #1d2955;
     }
 }
 
@@ -267,7 +293,7 @@ main {
 
         &:focus,
         &:hover {
-            border-color: var(--textbox-border);
+            border-color: var(--input-focus-border);
         }
     }
 
@@ -331,13 +357,13 @@ main {
     background-color: var(--button-bg);
     padding: 0.5rem 1rem;
     border: none;
-    color: #fff;
+    color: var(--button-font-color);
     border-radius: 0.25em;
     cursor: pointer;
     border: 1px solid var(--button-bg);
 
     &.inv {
-        background-color: #fff;
+        background-color: var(--button-ivert-bg);
         color: var(--button-bg);
 
         &:hover {
@@ -347,7 +373,7 @@ main {
 
     &:hover {
         background-color: var(--button-bg-hover);
-        color: #fff;
+        color: var(--button-font-color);
     }
 }
 
@@ -357,6 +383,70 @@ main {
 
 .right-section {
     font-size: 1rem;
+}
+
+.darkmode-label {
+    position: relative;
+
+    input {
+        position: absolute;
+        transform: scale(0);
+    }
+
+    .toggle {
+        position: relative;
+        display: block;
+        height: 30px;
+        width: 30px;
+        background-color: #fff;
+        box-shadow: inset 0 0 0 2px #cdd8ff;
+        border-radius: 0.4em;
+        overflow: hidden;
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 8%;
+            left: 40%;
+            height: 15px;
+            width: 15px;
+            background-color: #fff;
+            border-radius: 50%;
+        }
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            height: 15px;
+            width: 15px;
+            background-color: #010002;
+            border-radius: 50%;
+        }
+    }
+
+    input:checked + .toggle {
+        background-color: #2b2b2b;
+        box-shadow: inset 0 0 0 2px #40465c;
+
+        &::before {
+            display: none;
+        }
+
+        &::after {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-image: radial-gradient(yellow 45%, transparent 45%),
+                repeating-conic-gradient(#2b2b2b 0deg 15deg, yellow 15deg 30deg);
+        }
+    }
+}
+
+.hidden {
+    display: none;
 }
 
 code {
