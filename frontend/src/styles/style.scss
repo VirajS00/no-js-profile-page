@@ -165,10 +165,12 @@ nav {
         height: 100%;
         width: 100%;
         object-fit: cover;
+        border-radius: 50%;
     }
 
-    .overlay {
+    .overlay-visible {
         position: absolute;
+        border-radius: 50%;
         height: 100%;
         width: 100%;
         top: 0;
@@ -183,11 +185,81 @@ nav {
         transition: opacity 250ms ease;
     }
 
-    &:hover .overlay {
+    &:hover .overlay-visible {
         opacity: 1;
         pointer-events: fill;
     }
+
+    .image-input {
+        position: absolute;
+        transform: scale(0);
+    }
+
+    .image-input:not(:invalid) + .modal-container {
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    .file-input-label {
+        cursor: pointer;
+    }
+
+    .modal-container {
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        background-color: rgb(0 0 0 / 0.616);
+        opacity: 1;
+        z-index: 1000;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 150ms ease;
+
+        .modal {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #1d2955;
+            background-color: #fff;
+            padding: 1rem 2rem;
+            padding-top: 2.5rem;
+            min-height: 150px;
+            font-size: 1rem;
+            box-shadow: 4px 5px 7px rgb(0 0 0 / 0.418);
+            border-radius: 0.5em;
+            display: flex;
+            flex-direction: column;
+            width: 80%;
+            max-width: 500px;
+            justify-content: space-between;
+
+            .button-container {
+                padding-top: 0.8rem;
+                align-self: flex-end;
+
+                button {
+                    background-color: #6764ff;
+                    color: #fff;
+                    padding: 0.5em 1em;
+                    border: 0;
+                    border-radius: 0.25em;
+                    border: 1px solid #6764ff;
+                    cursor: pointer;
+
+                    &[type="reset"] {
+                        background-color: transparent;
+                        border: 1px solid #6764ff;
+                        color: #6764ff;
+                    }
+                }
+            }
+        }
+    }
 }
+
 main {
     width: 100%;
     max-width: 865px;
@@ -387,6 +459,7 @@ main {
 
 .darkmode-label {
     position: relative;
+    cursor: pointer;
 
     input {
         position: absolute;
@@ -396,8 +469,8 @@ main {
     .toggle {
         position: relative;
         display: block;
-        height: 30px;
-        width: 30px;
+        height: 40px;
+        width: 40px;
         background-color: #fff;
         box-shadow: inset 0 0 0 2px #cdd8ff;
         border-radius: 0.4em;
@@ -406,10 +479,10 @@ main {
         &::after {
             content: "";
             position: absolute;
-            top: 8%;
-            left: 40%;
-            height: 15px;
-            width: 15px;
+            top: 10%;
+            left: 38%;
+            height: 20px;
+            width: 20px;
             background-color: #fff;
             border-radius: 50%;
         }
@@ -420,8 +493,8 @@ main {
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            height: 15px;
-            width: 15px;
+            height: 20px;
+            width: 20px;
             background-color: #010002;
             border-radius: 50%;
         }
