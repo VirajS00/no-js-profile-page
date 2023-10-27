@@ -4,19 +4,18 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="./styles/style.scss" />
-		<title>My Profile - {{ .name }}</title>
+		<title>My Profile - {{ .Name }}</title>
 	</head>
-	<body>
+	<body class="{{if .DarkMode}}darkmode{{end}}">
 		<nav>
 			<div class="nav-content">
 				<div class="logo">MY LOGO</div>
-				<div>
-					<label for="darkmode" class="darkmode-label">
-						<input type="checkbox" class="darkmode" id="darkmode" />
-						<span class="toggle"></span>
-						<span class="hidden">darkmode</span>
-					</label>
-				</div>
+				<form method="post" action="/darkmode">
+					<div for="darkmode" class="darkmode-label">
+						<input type="checkbox" class="darkmode" id="darkmode" name="DarkMode" value="darkMode" {{if .DarkMode}}checked{{end}} />
+						<button type="submit" class="toggle"><span class="hidden">darkmode</span></button>
+					</div>
+				</form>
 			</div>
 		</nav>
 		<main>
@@ -67,7 +66,7 @@
 						</form>
 					</div>
 				</div>
-				<h1>Welcome {{ .name }}</h1>
+				<h1>Welcome {{ .Name }}</h1>
 			</div>
 			<div class="card">
 				<div class="left-section">
@@ -82,17 +81,17 @@
 				</div>
 				<div class="right-section profile">
 					<h2>User Profile</h2>
-					<form action="">
+					<form action="/" method="POST">
 						<div class="fields-container">
 							<div class="field">
 								<div class="title">Name</div>
 								<div class="description">Your name.</div>
-								<input type="text" name="name" value="{{ .name }}" />
+								<input type="text" name="Name" value="{{ .Name }}" />
 							</div>
 							<div class="field">
 								<div class="title">Email</div>
 								<div class="description">Your email address.</div>
-								<input type="text" name="name" value="{{ .email }}" />
+								<input type="text" name="Email" value="{{ .Email }}" />
 							</div>
 							<div class="field inline check">
 								<div>
@@ -102,9 +101,13 @@
 								<div>
 									<input
 										type="checkbox"
-										name="show-address"
+										name="ShowAddress"
 										id="show-address"
 										class="checkbox"
+										value="showAddess"
+										{{if .ShowAddress}}
+										checked
+										{{end}}
 									/>
 									<label for="show-address" class="checkbox-label">
 										<span class="hide">Show Address</span>
@@ -117,7 +120,7 @@
 							<div class="field address">
 								<div class="title">Address</div>
 								<div class="description">Your street address.</div>
-								<input type="text" name="name" value="{{ .address }}" />
+								<input type="text" name="Address" value="{{ .Address }}" />
 							</div>
 							<div class="button-container">
 								<button type="submit" class="btn">Submit</button>
