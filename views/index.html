@@ -23,15 +23,15 @@
 			<div class="profile">
 				<div class="profile-pic">
 					<img
-						src="https://eitrawmaterials.eu/wp-content/uploads/2016/09/person-icon.png"
+						src='{{or .ImageData.ImageUrl "https://eitrawmaterials.eu/wp-content/uploads/2016/09/person-icon.png"}}'
 						alt="profile picture"
 					/>
 					<div class="overlay">
-						<form action="">
+						<form action="/profilepic" enctype="multipart/form-data" method="POST">
 							<input
 								type="file"
 								class="image-input"
-								name="imageInput"
+								name="ImageInput"
 								id="imageInput"
 								required
 							/>
