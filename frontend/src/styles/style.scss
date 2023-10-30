@@ -44,6 +44,8 @@
     --button-font-color: #fff;
 
     --code-bg: #ddddff;
+    --link-logo-color: #2c41a7;
+    --link-logo-hover-color: #122378;
 }
 
 body {
@@ -110,6 +112,8 @@ body {
         --button-font-color: #17143e;
 
         --code-bg: #6a6ac3;
+        --link-logo-color: #aebaf7;
+        --link-logo-hover-color: #d9dffd;
     }
 }
 
@@ -455,6 +459,10 @@ main {
 
 .right-section {
     font-size: 1rem;
+
+    &.about {
+        position: relative;
+    }
 }
 
 .darkmode-label {
@@ -539,4 +547,45 @@ code {
     margin: 0 0.1em;
     font-weight: 600;
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.links {
+    display: flex;
+    gap: 0.5rem;
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+
+    a {
+        position: relative;
+        text-decoration: none;
+        color: var(--link-logo-color);
+
+        &::after {
+            content: attr(title);
+            position: absolute;
+            bottom: calc(100% + 0.25rem);
+            right: 0;
+            background-color: #fff;
+            padding: 0.25em 0.5em;
+            border-radius: 0.5em;
+            box-shadow: 5px 5px 5px;
+            opacity: 0;
+            transition: opacity 250ms ease;
+            color: #1d2955;
+        }
+
+        &:hover {
+            color: var(--link-logo-hover-color);
+
+            &::after {
+                opacity: 1;
+            }
+        }
+
+        svg {
+            height: 40px;
+            width: 40px;
+        }
+    }
 }
