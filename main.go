@@ -58,6 +58,18 @@ func main() {
 	})
 
 	app.Post("/", func(c *fiber.Ctx) error {
+		dataByte, err := os.ReadFile(dataFile)
+
+		if err != nil {
+			return err
+		}
+
+		var data Data
+
+		if err := json.Unmarshal(dataByte, &data); err != nil {
+			return err
+		}
+
 		name := string(c.Context().FormValue("Name"))
 		email := string(c.Context().FormValue("Email"))
 		address := string(c.Context().FormValue("Address"))
@@ -74,6 +86,8 @@ func main() {
 			Email:       email,
 			Address:     address,
 			ShowAddress: showAddress,
+			DarkMode:    data.DarkMode,
+			ImageData:   data.ImageData,
 		}
 
 		jsonStr, err := json.Marshal(d)
@@ -115,8 +129,8 @@ func main() {
 			Email:       data.Email,
 			ShowAddress: data.ShowAddress,
 			Address:     data.Address,
-			DarkMode:    darkMode,
 			ImageData:   data.ImageData,
+			DarkMode:    darkMode,
 		}
 
 		jsonStr, err := json.Marshal(newData)

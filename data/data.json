@@ -1,18 +1,1 @@
-{
-	"name": "Jon Doe",
-	"email": "hello@email.com",
-	"show_address": true,
-	"address": "Wall Street",
-	"dark_mode": false,
-	"image_data": {
-		"image_name": "ecd7c505d8e04cbbb879d0f37138ed38.png",
-		"image_url": "http://0.0.0.0:3000/images/ecd7c505d8e04cbbb879d0f37138ed38.png",
-		"header": {
-			"Content-Disposition": [
-				"form-data; name=\"ImageInput\"; filename=\"emoji.png\""
-			],
-			"Content-Type": ["image/png"]
-		},
-		"size": 9546
-	}
-}
+{"name":"Jon Doe","email":"hello@email.com","show_address":true,"address":"Wall Street","dark_mode":false,"image_data":{"image_name":"34ea8e522a584e9a9603c12984106f33.png","image_url":"http://0.0.0.0:3000/images/34ea8e522a584e9a9603c12984106f33.png","header":{"Content-Disposition":["form-data; name=\"ImageInput\"; filename=\"emoji.png\""],"Content-Type":["image/png"]},"size":9546}}
