@@ -201,7 +201,7 @@ func main() {
 			return err
 		}
 
-		imageUrl := fmt.Sprintf("http://0.0.0.0:%s/images/%s", port, image)
+		imageUrl := fmt.Sprintf("%s/images/%s", c.BaseURL(), image)
 
 		imageData := ImageData{
 			ImageName: image,
