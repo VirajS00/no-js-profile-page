@@ -30,6 +30,14 @@ type Data struct {
 }
 
 func main() {
+	var port string
+
+	if os.Getenv("PORT") != "" {
+		port = os.Getenv("PORT")
+	} else {
+		port = "3000"
+	}
+
 	engine := html.New("./views", ".html")
 
 	app := fiber.New(fiber.Config{
@@ -193,7 +201,7 @@ func main() {
 			return err
 		}
 
-		imageUrl := fmt.Sprintf("http://0.0.0.0:3000/images/%s", image)
+		imageUrl := fmt.Sprintf("http://0.0.0.0:%s/images/%s", port, image)
 
 		imageData := ImageData{
 			ImageName: image,
@@ -229,5 +237,5 @@ func main() {
 		return c.Redirect("/")
 	})
 
-	app.Listen("0.0.0.0:3000")
+	app.Listen("0.0.0.0:" + port)
 }
